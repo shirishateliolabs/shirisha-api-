@@ -1,0 +1,427 @@
+{
+	"info": {
+		"_postman_id": "8fb5c5a1-b290-4af9-afa4-8ac1a7e44695",
+		"name": "rest apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24146049"
+	},
+	"item": [
+		{
+			"name": "posetive test cases",
+			"item": []
+		},
+		{
+			"name": "list of users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"verify if response code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"verify if response code is ok\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"verify if response body is presest\", function () {\r",
+							"    pm.response.to.have.body();\r",
+							"});\r",
+							"pm.test(\"verify if response body is JSON\", function () {\r",
+							"    pm.response.to.have.json.body();\r",
+							"});\r",
+							"pm.test(\"Verify if Content-Type = application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+							"});\r",
+							"pm.test(\"Verify if response body contains mandatory strings\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"email\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"first_name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"last_name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"avatar\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"page\");\r",
+							"});\r",
+							"pm.test(\"Verify if first_name=Lindsay\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[1].first_name).to.eql(\"Lindsay\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify if id=11 & email=george.edwards@reqres.in\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[4].id).to.eql(11);\r",
+							"    pm.expect(jsonData.data[4].email).to.eql(\"george.edwards@reqres.in\");\r",
+							"});\r",
+							"pm.test(\"Verify if response time is less than 1000 milli-seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list of user page1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"verify if response code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"verify if response code is ok\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"verify if response body is presest\", function () {\r",
+							"    pm.response.to.have.body();\r",
+							"});\r",
+							"pm.test(\"verify if response body is JSON\", function () {\r",
+							"    pm.response.to.have.json.body();\r",
+							"});\r",
+							"pm.test(\"Verify if Content-Type = application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+							"});\r",
+							"pm.test(\"Verify if response body contains mandatory strings\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"email\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"first_name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"last_name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"avatar\");\r",
+							"    \r",
+							"});\r",
+							"pm.test(\"Verify if response time is less than 1000 milli-seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/1",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "single user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"verify if response code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"verify if response code is ok\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"verify if response body is presest\", function () {\r",
+							"    pm.response.to.have.body();\r",
+							"});\r",
+							"pm.test(\"verify if response body is JSON\", function () {\r",
+							"    pm.response.to.have.json.body();\r",
+							"});\r",
+							"pm.test(\"Verify if Content-Type = application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+							"});\r",
+							"pm.test(\"Verify if response body contains mandatory strings\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"email\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"first_name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"last_name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"avatar\");\r",
+							"  \r",
+							"});\r",
+							"pm.test(\"Verify if response time is less than 1000 milli-seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "single user not found ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"verify if response code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"pm.test(\"verify if response code is Not Found\", function () {\r",
+							"    pm.response.to.have.status(\"Not Found\");\r",
+							"});\r",
+							"pm.test(\"verify if response body is presest\", function () {\r",
+							"    pm.response.to.have.body();\r",
+							"});\r",
+							"pm.test(\"verify if response body is JSON\", function () {\r",
+							"    pm.response.to.have.json.body();\r",
+							"});\r",
+							"pm.test(\"Verify if Content-Type = application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+							"});\r",
+							"pm.test(\"Verify if response time is less than 1000 milli-seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/23",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"verify if response code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"verify if response code is Created\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"pm.test(\"verify if response body is presest\", function () {\r",
+							"    pm.response.to.have.body();\r",
+							"});\r",
+							"pm.test(\"verify if response body is JSON\", function () {\r",
+							"    pm.response.to.have.json.body();\r",
+							"});\r",
+							"pm.test(\"Verify if Content-Type = application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+							"});\r",
+							"\r",
+							"  \r",
+							" pm.test(\"Verify if response body contains mandatory strings\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"job\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"createdAt\");\r",
+							"});\r",
+							"pm.test(\"Verify if response time is less than 1000 milli-seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"shirisha\",\r\n    \"job\": \"student\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"verify if response code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"verify if response code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"verify if response code is ok\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"verify if response body is presest\", function () {\r",
+							"    pm.response.to.have.body();\r",
+							"});\r",
+							"pm.test(\"verify if response body is JSON\", function () {\r",
+							"    pm.response.to.have.json.body();\r",
+							"});\r",
+							"pm.test(\"Verify if Content-Type = application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+							"});\r",
+							"pm.test(\"Verify if response body contains mandatory strings\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"job\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"updatedAt\");\r",
+							"});\r",
+							"pm.test(\"Verify if response time is less than 1000 milli-seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"shirish sahu\",\r\n    \"job\": \"api testing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/99",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"99"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"verify if response code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"pm.test(\"verify if response code No Content\", function () {\r",
+							"    pm.response.to.have.status(\"No Content\");\r",
+							"});\r",
+							"pm.test(\"verify if response body is presest\", function () {\r",
+							"    pm.response.to.have.body();\r",
+							"});\r",
+							"pm.test(\"Verify if response time is less than 1000 milli-seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/99",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"99"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
